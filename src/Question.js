@@ -7,7 +7,7 @@ const Question = ({ question, questionNumber, onAnswerClick }) => {
   useEffect(() => {
     // Función para mezclar las alternativas al azar
     const shuffleOptions = () => {
-      const shuffled = question.alternativas.sort(() => Math.random() - 0.5);
+      const shuffled = question?.alternativas.sort(() => Math.random() - 0.5);
       return shuffled;
     };
 
@@ -19,14 +19,14 @@ const Question = ({ question, questionNumber, onAnswerClick }) => {
   return (
     <Card>
       <CardContent>
-        <Typography variant='h5' gutterBottom>
+        <Typography variant="h5" gutterBottom>
           {questionNumber}. {question?.pregunta}
         </Typography>
-        <Box display='flex' flexDirection='column'>
-          {shuffledOptions.map((option, index) => (
+        <Box display="flex" flexDirection="column">
+          {shuffledOptions?.map((option, index) => (
             <Button
               key={index}
-              variant='outlined'
+              variant="outlined"
               onClick={() => onAnswerClick(option.correcta, option.texto)}
               sx={{ mt: 2 }}
             >

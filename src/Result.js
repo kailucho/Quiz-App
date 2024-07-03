@@ -3,13 +3,13 @@ import { Card, CardContent, Typography, Box, Button } from "@mui/material";
 
 const Result = ({ score, questions, userAnswers, onRetry }) => {
   return (
-    <Box textAlign='center'>
-      <Typography variant='h4' gutterBottom>
+    <Box textAlign="center">
+      <Typography variant="h4" gutterBottom>
         You scored {score} out of {questions}
       </Typography>
       <Button
-        variant='contained'
-        color='primary'
+        variant="contained"
+        color="primary"
         onClick={onRetry}
         sx={{ mt: 3 }}
       >
@@ -18,7 +18,7 @@ const Result = ({ score, questions, userAnswers, onRetry }) => {
       {userAnswers.map((userAnswer, index) => (
         <Card key={index} sx={{ mt: 2 }}>
           <CardContent>
-            <Typography variant='h6'>
+            <Typography variant="h6">
               {index + 1}. {userAnswer.question.pregunta}
             </Typography>
             {userAnswer.question.alternativas.map((option, idx) => (
@@ -31,9 +31,13 @@ const Result = ({ score, questions, userAnswers, onRetry }) => {
                       ? userAnswer.isCorrect
                         ? "green"
                         : "red"
+                      : option.correcta
+                      ? "blue"
                       : "black",
                   fontWeight:
-                    userAnswer.answer === option.texto ? "bold" : "normal",
+                    userAnswer.answer === option.texto || option.correcta
+                      ? "bold"
+                      : "normal",
                 }}
               >
                 {String.fromCharCode(97 + idx)}. {option.texto}
